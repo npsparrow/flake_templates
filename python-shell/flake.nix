@@ -14,7 +14,8 @@
       pkgs = import nixpkgs {inherit system;};
     in
     {
-      devShells.x86_64-linux.python =
+      # nix develop sparrow#python-shell
+      devShells.x86_64-linux.default = 
         let
           pythonPackages = pkgs.python312Packages;
           pyPkgs = with pythonPackages; [
@@ -23,10 +24,10 @@
         in
         pkgs.mkShell {
           packages = [
-            nixpkgs-python.packages.x86_64-linux.pythonVersion
+            nixpkgs-python.packages.x86_64-linux.${pythonVersion}
             pyPkgs
             pkgs.zsh
-            pkgs.nodePackages.pyright # change ?
+            pkgs.pyright # change ?
           ];
           shellHook = ''
             python --version
