@@ -10,7 +10,7 @@
   outputs = {self, nixpkgs, nixpkgs-python, ...}: 
     let
       system = "x86_64-linux";
-      pythonVersion = "3.12.3"; # set python version
+      pythonVersion = "3.12"; # set python version
       pkgs = import nixpkgs {inherit system;};
     in
     {
